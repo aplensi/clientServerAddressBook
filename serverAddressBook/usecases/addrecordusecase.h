@@ -6,9 +6,9 @@
 
 class AddRecordUseCase
 {
-    IPersonsSource& m_personSource;
+    IPresonsRepository& m_repository;
 public:
-    AddRecordUseCase(IPersonsSource& personSource);
+    AddRecordUseCase(IPresonsRepository& repository);
     QList<Person> add(const Request& Request);
 };
 

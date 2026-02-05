@@ -6,9 +6,9 @@
 
 class DeleteRecordUseCase
 {
-    IPersonsSource& m_personSource;
+    IPresonsRepository& m_repository;
 public:
-    DeleteRecordUseCase(IPersonsSource& personSource);
+    DeleteRecordUseCase(IPresonsRepository& repository);
 
     void remove(const Request& request);
 };

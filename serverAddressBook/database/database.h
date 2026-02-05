@@ -8,21 +8,16 @@
 #include <QSqlQuery>
 #include <QSql>
 
-class IPersonsSource{
+class IPresonsRepository{
 public:
-    virtual ~IPersonsSource() = default;
+    virtual ~IPresonsRepository() = default;
     virtual Person add(const QString& name, const QString& address, const QString& phone) = 0;
     virtual bool remove(int id) = 0;
     virtual bool change(int id, const QString& name, const QString& address, const QString& phone) = 0;
-};
-
-class IPersonsSink{
-public:
-    virtual ~IPersonsSink() = default;
     virtual QList<Person> getData() = 0;
 };
 
-class Database : public IPersonsSink, public IPersonsSource{
+class Database : public IPresonsRepository{
 
     static Database* m_database;
 

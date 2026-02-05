@@ -1,11 +1,11 @@
 #include "deleterecordusecase.h"
 
-DeleteRecordUseCase::DeleteRecordUseCase(IPersonsSource &personSource) : m_personSource(personSource){}
+DeleteRecordUseCase::DeleteRecordUseCase(IPresonsRepository& repository) : m_repository(repository){}
 
 void DeleteRecordUseCase::remove(const Request &request)
 {
     for(const Person& person : request.getPersons()){
-        m_personSource.remove(person.id());
+        m_repository.remove(person.id());
     }
 }
 

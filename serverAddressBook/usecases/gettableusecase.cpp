@@ -1,9 +1,9 @@
 #include "gettableusecase.h"
 
-GetTableUseCase::GetTableUseCase(IPersonsSink &personSink) : m_personSink(personSink){}
+GetTableUseCase::GetTableUseCase(IPresonsRepository& repository) : m_repository(repository){}
 
 QList<Person> GetTableUseCase::get()
 {
-    return m_personSink.getData();
+    return m_repository.getData();
 }
 

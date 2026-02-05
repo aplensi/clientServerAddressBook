@@ -6,9 +6,9 @@
 
 class ChangeRecordUseCase
 {
-    IPersonsSource& m_personSource;
+    IPresonsRepository& m_repository;
 public:
-    ChangeRecordUseCase(IPersonsSource& personSource);
+    ChangeRecordUseCase(IPresonsRepository& repository);
     void change(const Request& request);
 };
 
