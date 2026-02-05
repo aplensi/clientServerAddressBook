@@ -2,12 +2,12 @@
 
 JsonParser::JsonParser() {}
 
-Query JsonParser::toQuery(const QByteArray &array)
+Request JsonParser::toQuery(const QByteArray &array)
 {
     QJsonDocument doc = QJsonDocument::fromJson(array);
 
     if(doc.isEmpty()){
-        return Query("");
+        return Request("");
     }
 
     QJsonArray jArray = doc.object()["persons"].toArray();
@@ -19,15 +19,15 @@ Query JsonParser::toQuery(const QByteArray &array)
         persons.append(Person(obj["Id"].toInt(), obj["Name"].toString(), obj["Address"].toString(), obj["Phone"].toString()));
     }
 
-    return Query(doc.object()["query"].toString(), persons);
+    return Request(doc.object()["request"].toString(), persons);
 }
 
-QByteArray JsonParser::toByteArray(const Query& query)
+QByteArray JsonParser::toByteArray(const Request& request)
 {
     QJsonObject obj;
     QJsonArray personsJ;
 
-    for(const auto& person : query.getPersons()){
+    for(const auto& person : request.getPersons()){
         QJsonObject personJ;
         personJ["Id"] = person.id();
         personJ["Name"] = person.name();
@@ -36,7 +36,7 @@ QByteArray JsonParser::toByteArray(const Query& query)
         personsJ.append(personJ);
     }
 
-    obj["query"] = query.getRequest();
+    obj["request"] = request.getRequest();
     obj["persons"] = personsJ;
 
     QJsonDocument doc(obj);

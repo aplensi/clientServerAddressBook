@@ -8,12 +8,12 @@ CONFIG += c++17 cmdline
 
 SOURCES += \
         ../commonFiles/DataTransformer/jsonparser.cpp \
+        ../commonFiles/Entities/request.cpp \
         controller/controller.cpp \
         entity/client.cpp \
         main.cpp \
         server/server.cpp \
         ../commonFiles/Entities/person.cpp \
-        ../commonFiles/Entities/query.cpp \
         database/database.cpp \
         usecases/addrecordusecase.cpp \
         usecases/changerecordusecase.cpp \
@@ -22,10 +22,10 @@ SOURCES += \
 
 HEADERS += \
         ../commonFiles/DataTransformer/jsonparser.h \
+        ../commonFiles/Entities/request.h \
         controller/controller.h \
         entity/client.h \
         ../commonFiles/Entities/person.h \
-        ../commonFiles/Entities/query.h \
         database/database.h \
         server/server.h \
         usecases/addrecordusecase.h \

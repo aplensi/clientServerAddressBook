@@ -2,7 +2,7 @@
 #define GETTABLEUSECASE_H
 
 #include "../database/database.h"
-#include "../../commonFiles/Entities/query.h"
+#include "../../commonFiles/Entities/request.h"
 
 class GetTableUseCase
 {

@@ -2,7 +2,7 @@
 #define DELETERECORDUSECASE_H
 
 #include "../database/database.h"
-#include "../../commonFiles/Entities/query.h"
+#include "../../commonFiles/Entities/request.h"
 
 class DeleteRecordUseCase
 {
@@ -10,7 +10,7 @@ class DeleteRecordUseCase
 public:
     DeleteRecordUseCase(IPersonsSource& personSource);
 
-    void remove(const Query& query);
+    void remove(const Request& request);
 };
 
 #endif // DELETERECORDUSECASE_H

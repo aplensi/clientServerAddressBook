@@ -1,7 +1,7 @@
 #ifndef JSONCONTROLLER_H
 #define JSONCONTROLLER_H
 
-#include "../Entities/query.h"
+#include "../Entities/request.h"
 #include <QJsonParseError>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -11,8 +11,8 @@ class JsonParser
 {
 public:
     JsonParser();
-    Query toQuery(const QByteArray& array);
-    QByteArray toByteArray(const Query& query);
+    Request toQuery(const QByteArray& array);
+    QByteArray toByteArray(const Request& request);
 };
 
 #endif // JSONCONTROLLER_H
