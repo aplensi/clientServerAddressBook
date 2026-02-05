@@ -11,7 +11,7 @@ class JsonParser
 {
 public:
     JsonParser();
-    Request toQuery(const QByteArray& array);
+    Request toRequest(const QByteArray& array);
     QByteArray toByteArray(const Request& request);
 };
 

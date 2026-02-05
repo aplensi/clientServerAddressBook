@@ -9,7 +9,7 @@ class AddRecordUseCase
     IPersonsSource& m_personSource;
 public:
     AddRecordUseCase(IPersonsSource& personSource);
-    void add(const Request& Request);
+    QList<Person> add(const Request& Request);
 };
 
 #endif // ADDRECORDUSECASE_H

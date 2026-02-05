@@ -2,7 +2,7 @@
 
 JsonParser::JsonParser() {}
 
-Request JsonParser::toQuery(const QByteArray &array)
+Request JsonParser::toRequest(const QByteArray &array)
 {
     QJsonDocument doc = QJsonDocument::fromJson(array);
 

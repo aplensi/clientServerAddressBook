@@ -2,10 +2,12 @@
 
 AddRecordUseCase::AddRecordUseCase(IPersonsSource& personSource) : m_personSource(personSource){}
 
-void AddRecordUseCase::add(const Request &request)
+QList<Person> AddRecordUseCase::add(const Request &request)
 {
+    QList<Person> persons;
     for(const Person& person : request.getPersons()){
-        m_personSource.add(person.name(), person.address(), person.phone());
+        persons.append(m_personSource.add(person.name(), person.address(), person.phone()));
     }
+    return persons;
 }
 

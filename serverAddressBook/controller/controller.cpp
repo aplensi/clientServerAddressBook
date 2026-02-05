@@ -2,17 +2,20 @@
 
 void Controller::definitionQuery(Client client)
 {
-    Request request = jsonParser.toQuery(client.getDataArray());
+    Request request = jsonParser.toRequest(client.getDataArray());
     if(request.getRequest() == "get"){
         m_server.send(jsonParser.toByteArray(Request(request.getRequest(), m_getTable.get())), client);
     }else if(request.getRequest() == "delete"){
         m_deleteRecord.remove(request);
+        m_server.send(jsonParser.toByteArray(Request("success")), client);
     }else if(request.getRequest() == "add"){
-        m_addRecord.add(request);
+        m_server.send(jsonParser.toByteArray(Request("add", m_addRecord.add(request))), client);
     }else if(request.getRequest() == "change"){
         m_changeRecord.change(request);
+        m_server.send(jsonParser.toByteArray(Request("success")), client);
     }else{
         qDebug() << "Invalid request. Client: " << client.getAddress() << ":" << client.getPort();
+        m_server.send(jsonParser.toByteArray(Request("error")), client);
         return;
     }
 }
