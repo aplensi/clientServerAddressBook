@@ -7,10 +7,10 @@
 #include <QJsonArray>
 #include <QJsonValue>
 
-class JsonController
+class JsonParser
 {
 public:
-    JsonController();
+    JsonParser();
     Query toQuery(const QByteArray& array);
     QByteArray toByteArray(const Query& query);
 };

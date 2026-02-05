@@ -4,13 +4,13 @@
 #include <QObject>
 #include "../usecases/include.h"
 #include "../server/server.h"
-#include "../../commonFiles/DataTransformer/jsoncontroller.h"
+#include "../../commonFiles/DataTransformer/jsonparser.h"
 #include "../entity/client.h"
 
 class Controller : public QObject
 {
 Q_OBJECT
-    JsonController jsonController;
+    JsonParser jsonParser;
     Server& m_server;
 
     AddRecordUseCase m_addRecord;

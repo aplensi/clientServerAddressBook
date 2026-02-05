@@ -1,8 +1,8 @@
-#include "jsoncontroller.h"
+#include "jsonparser.h"
 
-JsonController::JsonController() {}
+JsonParser::JsonParser() {}
 
-Query JsonController::toQuery(const QByteArray &array)
+Query JsonParser::toQuery(const QByteArray &array)
 {
     QJsonDocument doc = QJsonDocument::fromJson(array);
 
@@ -22,7 +22,7 @@ Query JsonController::toQuery(const QByteArray &array)
     return Query(doc.object()["query"].toString(), persons);
 }
 
-QByteArray JsonController::toByteArray(const Query& query)
+QByteArray JsonParser::toByteArray(const Query& query)
 {
     QJsonObject obj;
     QJsonArray personsJ;

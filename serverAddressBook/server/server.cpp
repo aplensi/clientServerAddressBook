@@ -6,7 +6,9 @@ Server::Server(){
     qDebug() << "Server started on port: " << m_socket->localPort();
 }
 
-Server::~Server(){}
+Server::~Server(){
+    qDebug() << "penisiki";
+}
 
 void Server::send(const QByteArray& bytearray, const Client& client)
 {

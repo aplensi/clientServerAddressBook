@@ -7,7 +7,7 @@ CONFIG += c++17 cmdline
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        ../commonFiles/DataTransformer/jsoncontroller.cpp \
+        ../commonFiles/DataTransformer/jsonparser.cpp \
         controller/controller.cpp \
         entity/client.cpp \
         main.cpp \
@@ -21,7 +21,7 @@ SOURCES += \
         usecases/gettableusecase.cpp
 
 HEADERS += \
-        ../commonFiles/DataTransformer/jsoncontroller.h \
+        ../commonFiles/DataTransformer/jsonparser.h \
         controller/controller.h \
         entity/client.h \
         ../commonFiles/Entities/person.h \

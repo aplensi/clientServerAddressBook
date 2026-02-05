@@ -1,7 +1,7 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include "entity/client.h"
+#include "../entity/client.h"
 #include <QObject>
 #include <QNetworkDatagram>
 #include <QUdpSocket>
