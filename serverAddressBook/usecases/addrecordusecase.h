@@ -9,7 +9,7 @@ class AddRecordUseCase
     IPresonsRepository& m_repository;
 public:
     AddRecordUseCase(IPresonsRepository& repository);
-    QList<Person> add(const Request& Request);
+    QList<Person> add(const QList<Person>& persons);
 };
 
 #endif // ADDRECORDUSECASE_H

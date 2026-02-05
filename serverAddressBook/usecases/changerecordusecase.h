@@ -9,7 +9,7 @@ class ChangeRecordUseCase
     IPresonsRepository& m_repository;
 public:
     ChangeRecordUseCase(IPresonsRepository& repository);
-    void change(const Request& request);
+    void change(const QList<Person>& persons);
 };
 
 #endif // CHANGERECORDUSECASE_H

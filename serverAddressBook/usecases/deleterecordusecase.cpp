@@ -2,9 +2,9 @@
 
 DeleteRecordUseCase::DeleteRecordUseCase(IPresonsRepository& repository) : m_repository(repository){}
 
-void DeleteRecordUseCase::remove(const Request &request)
+void DeleteRecordUseCase::remove(const QList<Person>& persons)
 {
-    for(const Person& person : request.getPersons()){
+    for(const Person& person : persons){
         m_repository.remove(person.id());
     }
 }
