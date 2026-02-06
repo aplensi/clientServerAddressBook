@@ -2,14 +2,13 @@
 #define ADDRECORDUSECASE_H
 
 #include "../database/database.h"
-#include "../../commonFiles/Entities/request.h".h"
 
 class AddRecordUseCase
 {
-    IPresonsRepository& m_repository;
+    IPersonsRepository& m_repository;
 public:
-    AddRecordUseCase(IPresonsRepository& repository);
-    QList<Person> add(const QList<Person>& persons);
+    AddRecordUseCase(IPersonsRepository& repository);
+    Person add(const QString& name, const QString& address, const QString& phone);
 };
 
 #endif // ADDRECORDUSECASE_H

@@ -1,7 +1,6 @@
 #include <QCoreApplication>
 #include "server/server.h"
-#include "controller/controller.h"
-#include "usecases/include.h"
+#include "controller/include.h"
 #include "database/database.h"
 
 int main(int argc, char *argv[])
@@ -15,8 +14,19 @@ int main(int argc, char *argv[])
     GetTableUseCase getTable(*database);
     DeleteRecordUseCase deleteRecord(*database);
 
+    AddRequestController* addController = new AddRequestController(addReсord);
+    ChangeRequestController* changeController = new ChangeRequestController(changeRecord);
+    GetRequestController* getController = new GetRequestController(getTable);
+    DeleteRequestController* deleteController = new DeleteRequestController(deleteRecord);
+    ErrorRequestController* errorController = new ErrorRequestController;
+
     Server server;
-    Controller controller(server, addReсord, changeRecord, getTable, deleteRecord);
+
+    server.setControllers("Add", addController);
+    server.setControllers("Change", changeController);
+    server.setControllers("Get", getController);
+    server.setControllers("Delete", deleteController);
+    server.setControllers("Error", errorController);
 
     return a.exec();
 }

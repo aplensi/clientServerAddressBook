@@ -6,9 +6,9 @@
 
 class GetTableUseCase
 {
-    IPresonsRepository& m_repository;
+    IPersonsRepository& m_repository;
 public:
-    GetTableUseCase(IPresonsRepository& repository);
+    GetTableUseCase(IPersonsRepository& repository);
     QList<Person> get();
 
 };

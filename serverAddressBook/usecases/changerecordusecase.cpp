@@ -1,11 +1,9 @@
 #include "changerecordusecase.h"
 
-ChangeRecordUseCase::ChangeRecordUseCase(IPresonsRepository& repository) : m_repository(repository){}
+ChangeRecordUseCase::ChangeRecordUseCase(IPersonsRepository& repository) : m_repository(repository){}
 
-void ChangeRecordUseCase::change(const QList<Person>& persons)
+void ChangeRecordUseCase::change(const Person& person)
 {
-    for(const Person& person : persons){
-        m_repository.change(person.id(), person.name(), person.address(), person.phone());
-    }
+    m_repository.change(person.id(), person.name(), person.address(), person.phone());
 }
 

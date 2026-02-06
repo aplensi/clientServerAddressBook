@@ -6,11 +6,11 @@
 
 class DeleteRecordUseCase
 {
-    IPresonsRepository& m_repository;
+    IPersonsRepository& m_repository;
 public:
-    DeleteRecordUseCase(IPresonsRepository& repository);
+    DeleteRecordUseCase(IPersonsRepository& repository);
 
-    void remove(const QList<Person>& persons);
+    void remove(const int id);
 };
 
 #endif // DELETERECORDUSECASE_H

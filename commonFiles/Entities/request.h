@@ -2,17 +2,23 @@
 #define QUERY_H
 
 #include "person.h"
+#include <QHostAddress>
+#include <QJsonObject>
 #include <QtCore>
 
 class Request
 {
-    QString m_request;
-    QList<Person> m_persons;
+    uint16_t m_port;
+    QHostAddress m_address;
+    QString m_command;
+    QJsonObject m_body;
 public:
-    Request(const QString& request);
-    Request(const QString& request, const QList<Person>& persons);
-    QList<Person> getPersons() const;
-    QString getRequest() const;
+    Request(const uint16_t& port, const QHostAddress& address, const QString& command, const QJsonObject& body);
+    uint16_t getPort() const;
+    QHostAddress getAddress() const;
+    QString getCommand() const;
+    QJsonObject getBody() const;
+
 };
 
 #endif // QUERY_H

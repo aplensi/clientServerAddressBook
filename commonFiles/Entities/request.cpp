@@ -1,15 +1,24 @@
 #include "request.h"
 
-Request::Request(const QString& request) : m_request(request){}
+Request::Request(const uint16_t &port, const QHostAddress &address, const QString &command, const QJsonObject &body)
+    : m_port(port), m_address(address), m_command(command), m_body(body){}
 
-Request::Request(const QString& request, const QList<Person>& persons) : m_request(request), m_persons(persons){}
-
-QList<Person> Request::getPersons() const
+uint16_t Request::getPort() const
 {
-    return m_persons;
+    return m_port;
 }
 
-QString Request::getRequest() const
+QHostAddress Request::getAddress() const
 {
-    return m_request;
+    return m_address;
+}
+
+QString Request::getCommand() const
+{
+    return m_command;
+}
+
+QJsonObject Request::getBody() const
+{
+    return m_body;
 }

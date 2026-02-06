@@ -7,10 +7,12 @@ CONFIG += c++17 cmdline
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        ../commonFiles/DataTransformer/jsonparser.cpp \
         ../commonFiles/Entities/request.cpp \
-        controller/controller.cpp \
-        entity/client.cpp \
+        controller/addrequestcontroller.cpp \
+        controller/changerequestcontroller.cpp \
+        controller/deleterequestcontroller.cpp \
+        controller/errorrequestcontroller.cpp \
+        controller/getrequestcontroller.cpp \
         main.cpp \
         server/server.cpp \
         ../commonFiles/Entities/person.cpp \
@@ -21,18 +23,21 @@ SOURCES += \
         usecases/gettableusecase.cpp
 
 HEADERS += \
-        ../commonFiles/DataTransformer/jsonparser.h \
         ../commonFiles/Entities/request.h \
-        controller/controller.h \
-        entity/client.h \
+        controller/addrequestcontroller.h \
+        controller/changerequestcontroller.h \
+        controller/deleterequestcontroller.h \
+        controller/errorrequestcontroller.h \
+        controller/getrequestcontroller.h \
+        controller/icontroller.h \
+        controller/include.h \
         ../commonFiles/Entities/person.h \
         database/database.h \
         server/server.h \
         usecases/addrecordusecase.h \
         usecases/changerecordusecase.h \
         usecases/deleterecordusecase.h \
-        usecases/gettableusecase.h \
-        usecases/include.h
+        usecases/gettableusecase.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

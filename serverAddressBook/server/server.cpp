@@ -10,9 +10,9 @@ Server::~Server(){
     qDebug() << "penisiki";
 }
 
-void Server::send(const QByteArray& bytearray, const Client& client)
+void Server::send(const QJsonObject& response, const QHostAddress address, const int port)
 {
-    m_socket->writeDatagram(bytearray, client.getAddress(), client.getPort());
+    m_socket->writeDatagram(QJsonDocument(response).toJson(QJsonDocument::Compact), address, port);
 }
 
 void Server::receive()
@@ -20,16 +20,35 @@ void Server::receive()
     connect(m_socket, &QUdpSocket::readyRead, this, &Server::receiveData);
 }
 
+void Server::setControllers(const QString &key, IController *controller)
+{
+    m_controllers[key] = controller;
+}
+
+void Server::defineRequest(const Request &request)
+{
+    if(!m_controllers.contains(request.getCommand())){
+        send(m_controllers[request.getCommand()]->handleRequest(request.getBody()), request.getAddress(), request.getPort());
+    }else{
+        send(m_controllers["error"]->handleRequest(QJsonObject()), request.getAddress(), request.getPort());
+    }
+}
+
 void Server::receiveData()
 {
     QByteArray replyData;
+    QJsonObject obj;
     QHostAddress address;
     int port = 0;
+
     while (m_socket->hasPendingDatagrams()) {
         QNetworkDatagram datagram = m_socket->receiveDatagram();
         replyData = datagram.data();
         port = datagram.senderPort();
         address = datagram.senderAddress();
     }
-    emit receivedData(Client(port, address, replyData));
+
+    obj = QJsonDocument::fromJson(replyData).object();
+
+    defineRequest(Request(port, address, obj["command"].toString(), obj));
 }

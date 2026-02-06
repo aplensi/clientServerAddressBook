@@ -1,6 +1,6 @@
 #include "gettableusecase.h"
 
-GetTableUseCase::GetTableUseCase(IPresonsRepository& repository) : m_repository(repository){}
+GetTableUseCase::GetTableUseCase(IPersonsRepository& repository) : m_repository(repository){}
 
 QList<Person> GetTableUseCase::get()
 {

@@ -1,11 +1,9 @@
 #include "deleterecordusecase.h"
 
-DeleteRecordUseCase::DeleteRecordUseCase(IPresonsRepository& repository) : m_repository(repository){}
+DeleteRecordUseCase::DeleteRecordUseCase(IPersonsRepository& repository) : m_repository(repository){}
 
-void DeleteRecordUseCase::remove(const QList<Person>& persons)
+void DeleteRecordUseCase::remove(const int id)
 {
-    for(const Person& person : persons){
-        m_repository.remove(person.id());
-    }
+    m_repository.remove(id);
 }
 
