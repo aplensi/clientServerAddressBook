@@ -8,11 +8,11 @@ CONFIG += c++17 cmdline
 
 SOURCES += \
         ../commonFiles/Entities/request.cpp \
-        controller/addrequestcontroller.cpp \
-        controller/changerequestcontroller.cpp \
-        controller/deleterequestcontroller.cpp \
-        controller/errorrequestcontroller.cpp \
-        controller/getrequestcontroller.cpp \
+        controllers/addrequestcontroller.cpp \
+        controllers/changerequestcontroller.cpp \
+        controllers/deleterequestcontroller.cpp \
+        controllers/errorrequestcontroller.cpp \
+        controllers/getrequestcontroller.cpp \
         main.cpp \
         server/server.cpp \
         ../commonFiles/Entities/person.cpp \
@@ -24,13 +24,13 @@ SOURCES += \
 
 HEADERS += \
         ../commonFiles/Entities/request.h \
-        controller/addrequestcontroller.h \
-        controller/changerequestcontroller.h \
-        controller/deleterequestcontroller.h \
-        controller/errorrequestcontroller.h \
-        controller/getrequestcontroller.h \
-        controller/icontroller.h \
-        controller/include.h \
+        controllers/addrequestcontroller.h \
+        controllers/changerequestcontroller.h \
+        controllers/deleterequestcontroller.h \
+        controllers/errorrequestcontroller.h \
+        controllers/getrequestcontroller.h \
+        controllers/icontroller.h \
+        controllerss/include.h \
         ../commonFiles/Entities/person.h \
         database/database.h \
         server/server.h \

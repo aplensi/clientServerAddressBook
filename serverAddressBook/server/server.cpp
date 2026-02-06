@@ -7,7 +7,9 @@ Server::Server(){
 }
 
 Server::~Server(){
-    qDebug() << "penisiki";
+    qDeleteAll(m_controllers);
+    m_controllers.clear();
+    m_socket->deleteLater();
 }
 
 void Server::send(const QJsonObject& response, const QHostAddress address, const int port)
@@ -30,7 +32,7 @@ void Server::defineRequest(const Request &request)
     if(!m_controllers.contains(request.getCommand())){
         send(m_controllers[request.getCommand()]->handleRequest(request.getBody()), request.getAddress(), request.getPort());
     }else{
-        send(m_controllers["error"]->handleRequest(QJsonObject()), request.getAddress(), request.getPort());
+        send(m_controllers["Error"]->handleRequest(QJsonObject()), request.getAddress(), request.getPort());
     }
 }
 
@@ -50,5 +52,5 @@ void Server::receiveData()
 
     obj = QJsonDocument::fromJson(replyData).object();
 
-    defineRequest(Request(port, address, obj["command"].toString(), obj));
+    defineRequest(Request(port, address, obj["Command"].toString(), obj));
 }

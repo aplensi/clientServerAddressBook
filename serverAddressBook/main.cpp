@@ -1,6 +1,6 @@
 #include <QCoreApplication>
 #include "server/server.h"
-#include "controller/include.h"
+#include "controllers/include.h"
 #include "database/database.h"
 
 int main(int argc, char *argv[])

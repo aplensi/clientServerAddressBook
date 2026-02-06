@@ -2,7 +2,7 @@
 #define SERVER_H
 
 #include "../../commonFiles/Entities/request.h"
-#include "../controller/icontroller.h"
+#include "../controllers/icontroller.h"
 #include <QObject>
 #include <QNetworkDatagram>
 #include <QUdpSocket>
