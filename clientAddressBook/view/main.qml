@@ -185,7 +185,7 @@ Window {
         id: addWindow
 
         onSaveButtonClicked: {
-            Controller.addButton(nameRowS, addressRowS, phoneRowS)
+            // AddController.sendRequest(nameRowS, addressRowS, phoneRowS)
         }
     }
 }

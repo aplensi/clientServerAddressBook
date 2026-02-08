@@ -2,7 +2,7 @@
 
 Server::Server(){
     m_socket = new QUdpSocket(this);
-    m_socket->bind(QHostAddress::Any);
+    m_socket->bind(QHostAddress::Any, 25565);
     qDebug() << "Server started on port: " << m_socket->localPort();
 }
 
@@ -29,7 +29,7 @@ void Server::setControllers(const QString &key, IController *controller)
 
 void Server::defineRequest(const Request &request)
 {
-    if(!m_controllers.contains(request.getCommand())){
+    if(m_controllers.contains(request.getCommand())){
         send(m_controllers[request.getCommand()]->handleRequest(request.getBody()), request.getAddress(), request.getPort());
     }else{
         send(m_controllers["Error"]->handleRequest(QJsonObject()), request.getAddress(), request.getPort());
@@ -51,6 +51,13 @@ void Server::receiveData()
     }
 
     obj = QJsonDocument::fromJson(replyData).object();
+    if(!obj.contains("Command")){
+        qDebug() << "Broken package: " << replyData << " | "
+                 << address << ":" << port;
+        return;
+    }
 
+    qDebug() << "Command: " << obj["Command"].toString() << " | "
+             << address << ":" << port;
     defineRequest(Request(port, address, obj["Command"].toString(), obj));
 }

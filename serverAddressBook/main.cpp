@@ -28,5 +28,7 @@ int main(int argc, char *argv[])
     server.setControllers("Delete", deleteController);
     server.setControllers("Error", errorController);
 
+    server.receive();
+
     return a.exec();
 }

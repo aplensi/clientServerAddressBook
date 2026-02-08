@@ -36,6 +36,7 @@ void Client::receiveData()
 
     obj = QJsonDocument::fromJson(replyData).object();
 
+    qDebug() << replyData;
 
     emit dataReceived(Request(obj["Command"].toString(), obj));
 }

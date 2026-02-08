@@ -3,7 +3,6 @@
 
 #include "icontroller.h"
 #include "../usecases/getdatausecase.h"
-#include "../../commonFiles/Entities/person.h"
 #include "../models/personmodel.h"
 #include <QJsonObject>
 
@@ -13,7 +12,7 @@ class AddRequestController : public IController
     PersonModel& m_model;
 public:
     AddRequestController(GetDataUseCase& getData, PersonModel& model);
-    void sendRequest(const Person& person);
+    Q_INVOKABLE void sendRequest(const QString& name, const QString& address, const QString& phone);
     void setAnswer(const Request& request) override;
 };
 

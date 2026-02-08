@@ -43,6 +43,8 @@ int main(int argc, char *argv[])
 
     engine.load(QUrl("qrc:/view/main.qml"));
 
+    getController->sendRequest();
+
     if (engine.rootObjects().isEmpty())
         return -1;
 
