@@ -57,7 +57,7 @@ void Server::receiveData()
         return;
     }
 
-    qDebug() << "Command: " << obj["Command"].toString() << " | "
+    qDebug() << "Command: " << obj["Command"].toString() << " | Body: " << replyData << " | "
              << address << ":" << port;
     defineRequest(Request(port, address, obj["Command"].toString(), obj));
 }

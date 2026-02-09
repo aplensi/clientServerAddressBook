@@ -15,5 +15,5 @@ void AddRequestController::sendRequest(const QString& name, const QString& addre
 
 void AddRequestController::setAnswer(const Request& request)
 {
-    m_model.addPerson(Person(request.getBody()["Id"].toInt(), request.getBody()["Name"].toString(), request.getBody()["Addres"].toString(), request.getBody()["Phone"].toString()));
+    m_model.addPerson(Person(request.getBody()["Id"].toInt(), request.getBody()["Name"].toString(), request.getBody()["Address"].toString(), request.getBody()["Phone"].toString()));
 }

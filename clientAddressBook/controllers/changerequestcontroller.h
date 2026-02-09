@@ -9,11 +9,12 @@
 
 class ChangeRequestController : public IController
 {
+    Q_OBJECT
     GetDataUseCase& m_getData;
     PersonModel& m_model;
 public:
     ChangeRequestController(GetDataUseCase& getData, PersonModel& model);
-    void sendRequest(const Person& person);
+    Q_INVOKABLE void sendRequest(const int id, const QString& name, const QString& address, const QString& phone);
     void setAnswer(const Request& request) override;
 };
 

@@ -38,6 +38,11 @@ void Client::receiveData()
 
     qDebug() << replyData;
 
+    if(!obj.contains("Command")){
+        qDebug() << "Broken package: " << replyData;
+        return;
+    }
+
     emit dataReceived(Request(obj["Command"].toString(), obj));
 }
 

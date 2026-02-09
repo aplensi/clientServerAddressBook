@@ -40,6 +40,9 @@ int main(int argc, char *argv[])
     QObject::connect(&client, &Client::dataReceived, &mainController, &MainController::selectController);
 
     engine.rootContext()->setContextProperty("Person", &proxyModel);
+    engine.rootContext()->setContextProperty("AddController", addController);
+    engine.rootContext()->setContextProperty("DeleteController", deleteController);
+    engine.rootContext()->setContextProperty("ChangeController", changeController);
 
     engine.load(QUrl("qrc:/view/main.qml"));
 

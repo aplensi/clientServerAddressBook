@@ -3,8 +3,9 @@
 
 #include "../entities/request.h"
 
-class IController
+class IController : public QObject
 {
+    Q_OBJECT
 public:
     virtual ~IController() = default;
     virtual void setAnswer(const Request& request) = 0;

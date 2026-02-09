@@ -143,7 +143,7 @@ Window {
             Button {
                 text: "Удалить"
                 onClicked: {
-                    Controller.deleteButton(idRow)
+                    DeleteController.sendRequest(idRow)
                     list.currentIndex = -1
                 }
             }
@@ -178,14 +178,14 @@ Window {
         id: changeWindow
 
         onSaveButtonClicked: {
-            Controller.changeButton(idRowS, nameRowS, addressRowS, phoneRowS)
+            ChangeController.sendRequest(idRowS, nameRowS, addressRowS, phoneRowS)
         }
     }
     ChangeWindow {
         id: addWindow
 
         onSaveButtonClicked: {
-            // AddController.sendRequest(nameRowS, addressRowS, phoneRowS)
+            AddController.sendRequest(nameRowS, addressRowS, phoneRowS)
         }
     }
 }

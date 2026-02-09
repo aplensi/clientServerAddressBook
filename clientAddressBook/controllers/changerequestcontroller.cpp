@@ -3,14 +3,14 @@
 ChangeRequestController::ChangeRequestController(GetDataUseCase &getData, PersonModel &model)
     : m_getData(getData), m_model(model){}
 
-void ChangeRequestController::sendRequest(const Person &person)
+void ChangeRequestController::sendRequest(const int id, const QString& name, const QString& address, const QString& phone)
 {
     QJsonObject obj;
     obj["Command"] = "Change";
-    obj["Id"] = person.id();
-    obj["Name"] = person.name();
-    obj["Address"] = person.address();
-    obj["Phone"] = person.phone();
+    obj["Id"] = id;
+    obj["Name"] = name;
+    obj["Address"] = address;
+    obj["Phone"] = phone;
     m_getData.pushData(obj);
 }
 

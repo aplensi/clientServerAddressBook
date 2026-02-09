@@ -9,11 +9,12 @@
 
 class GetRequestController : public IController
 {
+    Q_OBJECT
     GetDataUseCase& m_getData;
     PersonModel& m_model;
 public:
     GetRequestController(GetDataUseCase& getData, PersonModel& model);
-    void sendRequest();
+    Q_INVOKABLE void sendRequest();
     void setAnswer(const Request& request) override;
 };
 

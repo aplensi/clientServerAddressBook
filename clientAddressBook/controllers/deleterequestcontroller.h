@@ -8,11 +8,12 @@
 
 class DeleteRequestController : public IController
 {
+    Q_OBJECT
     GetDataUseCase& m_getData;
     PersonModel& m_model;
 public:
     DeleteRequestController(GetDataUseCase& getData, PersonModel& model);
-    void sendRequest(int id);
+    Q_INVOKABLE void sendRequest(int id);
     void setAnswer(const Request& request) override;
 };
 

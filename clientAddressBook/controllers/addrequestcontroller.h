@@ -8,6 +8,7 @@
 
 class AddRequestController : public IController
 {
+    Q_OBJECT
     GetDataUseCase& m_getData;
     PersonModel& m_model;
 public:

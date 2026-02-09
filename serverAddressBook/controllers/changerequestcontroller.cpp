@@ -4,8 +4,12 @@ ChangeRequestController::ChangeRequestController(ChangeRecordUseCase &usecase) :
 
 QJsonObject ChangeRequestController::handleRequest(const QJsonObject &body)
 {
-    m_usecase.change(Person(body["Id"].toInt(), body["Name"].toString(), body["Addres"].toString(), body["Phone"].toString()));
+    m_usecase.change(Person(body["Id"].toInt(), body["Name"].toString(), body["Address"].toString(), body["Phone"].toString()));
     QJsonObject obj;
-    obj["Command"] = "Success";
+    obj["Command"] = "Change";
+    obj["Id"] = body["Id"].toInt();
+    obj["Name"] = body["Name"].toString();
+    obj["Address"] = body["Address"].toString();
+    obj["Phone"] = body["Phone"].toString();
     return obj;
 }
