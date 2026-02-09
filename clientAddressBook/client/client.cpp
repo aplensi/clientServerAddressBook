@@ -48,6 +48,7 @@ void Client::receiveData()
 
 void Client::resend()
 {
+    qDebug() << "Timeout";
     m_socket->writeDatagram(QJsonDocument(m_lastResponse).toJson(QJsonDocument::Compact), m_serverAddress, m_serverPort);
     m_timer->start();
 }

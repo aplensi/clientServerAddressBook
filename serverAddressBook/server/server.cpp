@@ -30,7 +30,8 @@ void Server::setControllers(const QString &key, IController *controller)
 void Server::defineRequest(const Request &request)
 {
     if(m_controllers.contains(request.getCommand())){
-        send(m_controllers[request.getCommand()]->handleRequest(request.getBody()), request.getAddress(), request.getPort());
+        if(randomSend(50))
+            send(m_controllers[request.getCommand()]->handleRequest(request.getBody()), request.getAddress(), request.getPort());
     }else{
         send(m_controllers["Error"]->handleRequest(QJsonObject()), request.getAddress(), request.getPort());
     }
@@ -60,4 +61,12 @@ void Server::receiveData()
     qDebug() << "Command: " << obj["Command"].toString() << " | Body: " << replyData << " | "
              << address << ":" << port;
     defineRequest(Request(port, address, obj["Command"].toString(), obj));
+}
+
+bool Server::randomSend(const int chance)
+{
+    int number = QRandomGenerator::global()->bounded(0, 100);
+    if(number <= chance)
+        return true;
+    return false;
 }

@@ -3,6 +3,7 @@
 
 #include "../../commonFiles/Entities/request.h"
 #include "../controllers/icontroller.h"
+#include <QRandomGenerator>
 #include <QObject>
 #include <QNetworkDatagram>
 #include <QUdpSocket>
@@ -15,6 +16,7 @@ class Server : public QObject
 
     void defineRequest(const Request& request);
     void receiveData();
+    bool randomSend(const int chance);
 public:
     Server();
     ~Server();
